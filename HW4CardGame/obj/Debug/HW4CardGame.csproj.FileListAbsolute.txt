@@ -1,0 +1,4 @@
+C:\Users\Huechi\source\repos\HW4CardGame\HW4CardGame\obj\Debug\HW4CardGame.csprojAssemblyReference.cache
+C:\Users\Huechi\source\repos\HW4CardGame\HW4CardGame\obj\Debug\HW4CardGame.Properties.Resources.resources
+C:\Users\Huechi\source\repos\HW4CardGame\HW4CardGame\obj\Debug\HW4CardGame.csproj.GenerateResource.cache
+C:\Users\Huechi\source\repos\HW4CardGame\HW4CardGame\obj\Debug\HW4CardGame.csproj.CoreCompileInputs.cache

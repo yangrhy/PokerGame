@@ -8,16 +8,17 @@ namespace HW4CardGame
 {
     class Card
     {
-        private string face { get; }
-        private string suit { get; }
+        private string Face { get; } // Card’s face ("Ace", "Deuce", ...)
+        private string Suit { get; } // Card’s suit ("Hearts", "Diamonds", ...)
 
-        public Card(string cardFace, string cardSuit)
+        // two-parameter constructor initializes card's Face and Suit
+        public Card(string face, string suit)
         {
-            face = cardFace;
-            suit = cardSuit;
+            Face = face; // initialize face of card
+            Suit = suit; // initialize suit of card
         }
 
-        public override string ToString() => $"{face} of {suit}";
-        
+        // return string representation of Card
+        public override string ToString() => $"{Face} of {Suit}";
     }
 }

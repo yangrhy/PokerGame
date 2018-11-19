@@ -241,6 +241,7 @@
             this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
             this.newGameToolStripMenuItem.Size = new System.Drawing.Size(77, 20);
             this.newGameToolStripMenuItem.Text = "New Game";
+            this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
             // 
             // generateHandsToolStripMenuItem
             // 
@@ -256,6 +257,7 @@
             this.generateHand1ToolStripMenuItem.Name = "generateHand1ToolStripMenuItem";
             this.generateHand1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.generateHand1ToolStripMenuItem.Text = "Generate Hand 1";
+            this.generateHand1ToolStripMenuItem.Click += new System.EventHandler(this.generateHand1ToolStripMenuItem_Click);
             // 
             // generateHand2ToolStripMenuItem
             // 

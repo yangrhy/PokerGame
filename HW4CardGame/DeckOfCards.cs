@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace HW4CardGame
 
         private const int NumberOfCards = 52; // number of cards in a deck
         private Card[] deck = new Card[NumberOfCards]; // array of Card objects
-        private int currentCard = 0; // index of next Card to be dealt (0-51)
+        private int currentCard = 0; // index of next Card to be dealt (0-51)    
 
         // Constructor used to fill deck of Cards
         public DeckOfCards()

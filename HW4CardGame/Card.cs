@@ -19,6 +19,6 @@ namespace HW4CardGame
         }
 
         // return string representation of Card
-        public override string ToString() => $"{Face} of {Suit}";
+        public override string ToString() => $"{Suit} {Face}";
     }
 }

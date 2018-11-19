@@ -81,20 +81,35 @@ namespace HW4CardGame
             myDeckOfCards.Shuffle();
         }
 
-        private void generateHand1ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            hand1PicBox1.Image = cardToImage[myDeckOfCards.DealCard().ToString()];
-            hand1PicBox2.Image = cardToImage[myDeckOfCards.DealCard().ToString()];
-            hand1PicBox3.Image = cardToImage[myDeckOfCards.DealCard().ToString()];
-            hand1PicBox4.Image = cardToImage[myDeckOfCards.DealCard().ToString()];
-            hand1PicBox5.Image = cardToImage[myDeckOfCards.DealCard().ToString()];
-
-        }
-
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Controls.Clear();
             this.InitializeComponent();
+            myDeckOfCards.currentCard = 0; // reset currentCard value so generateHands can work again
+            myDeckOfCards.Shuffle();
+        }
+
+        private void generateHandsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            while (myDeckOfCards.currentCard <= 10)
+            {
+                hand1PicBox1.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand1PicBox2.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand1PicBox3.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand1PicBox4.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand1PicBox5.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+
+                hand2PicBox1.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand2PicBox2.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand2PicBox3.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand2PicBox4.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand2PicBox5.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+            }
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

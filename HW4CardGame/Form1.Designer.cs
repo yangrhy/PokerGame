@@ -45,8 +45,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateHandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generateHand1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.generateHand2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1.SuspendLayout();
@@ -245,25 +243,10 @@
             // 
             // generateHandsToolStripMenuItem
             // 
-            this.generateHandsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.generateHand1ToolStripMenuItem,
-            this.generateHand2ToolStripMenuItem});
             this.generateHandsToolStripMenuItem.Name = "generateHandsToolStripMenuItem";
-            this.generateHandsToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
-            this.generateHandsToolStripMenuItem.Text = "Generate Hands";
-            // 
-            // generateHand1ToolStripMenuItem
-            // 
-            this.generateHand1ToolStripMenuItem.Name = "generateHand1ToolStripMenuItem";
-            this.generateHand1ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.generateHand1ToolStripMenuItem.Text = "Generate Hand 1";
-            this.generateHand1ToolStripMenuItem.Click += new System.EventHandler(this.generateHand1ToolStripMenuItem_Click);
-            // 
-            // generateHand2ToolStripMenuItem
-            // 
-            this.generateHand2ToolStripMenuItem.Name = "generateHand2ToolStripMenuItem";
-            this.generateHand2ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.generateHand2ToolStripMenuItem.Text = "Generate Hand 2";
+            this.generateHandsToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
+            this.generateHandsToolStripMenuItem.Text = "Deal Cards";
+            this.generateHandsToolStripMenuItem.Click += new System.EventHandler(this.generateHandsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
@@ -276,6 +259,7 @@
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
             this.exitToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.exitToolStripMenuItem1.Text = "Exit";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -327,8 +311,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateHandsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem generateHand1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem generateHand2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
     }

@@ -47,6 +47,9 @@
             this.generateHandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.hand1TextBox = new System.Windows.Forms.RichTextBox();
+            this.hand2TextBox = new System.Windows.Forms.RichTextBox();
+            this.compareTextBox = new System.Windows.Forms.RichTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hand1PicBox5)).BeginInit();
@@ -60,6 +63,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.hand2PicBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand2PicBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand2PicBox1)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -213,6 +217,9 @@
             // 
             this.tabPage3.BackgroundImage = global::HW4CardGame.Properties.Resources.poker_table;
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage3.Controls.Add(this.compareTextBox);
+            this.tabPage3.Controls.Add(this.hand2TextBox);
+            this.tabPage3.Controls.Add(this.hand1TextBox);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -253,6 +260,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.exitToolStripMenuItem.Text = "Evaluate Result";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
             // 
@@ -260,6 +268,33 @@
             this.exitToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
+            // 
+            // hand1TextBox
+            // 
+            this.hand1TextBox.Location = new System.Drawing.Point(202, 124);
+            this.hand1TextBox.Name = "hand1TextBox";
+            this.hand1TextBox.ReadOnly = true;
+            this.hand1TextBox.Size = new System.Drawing.Size(368, 23);
+            this.hand1TextBox.TabIndex = 0;
+            this.hand1TextBox.Text = "";
+            // 
+            // hand2TextBox
+            // 
+            this.hand2TextBox.Location = new System.Drawing.Point(202, 156);
+            this.hand2TextBox.Name = "hand2TextBox";
+            this.hand2TextBox.ReadOnly = true;
+            this.hand2TextBox.Size = new System.Drawing.Size(368, 23);
+            this.hand2TextBox.TabIndex = 1;
+            this.hand2TextBox.Text = "";
+            // 
+            // compareTextBox
+            // 
+            this.compareTextBox.Location = new System.Drawing.Point(200, 191);
+            this.compareTextBox.Name = "compareTextBox";
+            this.compareTextBox.ReadOnly = true;
+            this.compareTextBox.Size = new System.Drawing.Size(368, 23);
+            this.compareTextBox.TabIndex = 2;
+            this.compareTextBox.Text = "";
             // 
             // Form1
             // 
@@ -285,6 +320,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.hand2PicBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand2PicBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand2PicBox1)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -313,6 +349,9 @@
         private System.Windows.Forms.ToolStripMenuItem generateHandsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
+        private System.Windows.Forms.RichTextBox hand1TextBox;
+        private System.Windows.Forms.RichTextBox compareTextBox;
+        private System.Windows.Forms.RichTextBox hand2TextBox;
     }
 }
 

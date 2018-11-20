@@ -14,6 +14,11 @@ namespace HW4CardGame
     {
         DeckOfCards myDeckOfCards = new DeckOfCards();
 
+        // int array to keep track of DeckOfCards.deck[num]
+        // stores 1,2,3,4,5 and deck[1] = card that was given to that hand
+        int[] hand1Nums = new int[5];
+        int[] hand2Nums = new int[5];
+
         // Dictionary created to get correct image corresponding to what card is dealt
         public Dictionary<string, Image> cardToImage = new Dictionary<string, Image>()
         {
@@ -86,30 +91,95 @@ namespace HW4CardGame
             this.Controls.Clear();
             this.InitializeComponent();
             myDeckOfCards.currentCard = 0; // reset currentCard value so generateHands can work again
-            myDeckOfCards.Shuffle();
+            myDeckOfCards.Shuffle(); // reshuffle the deck
         }
 
         private void generateHandsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // deal cards as long as current card is no more than 10 (5 cards per player)
             while (myDeckOfCards.currentCard <= 10)
             {
+                hand1Nums[0] = myDeckOfCards.currentCard;
                 hand1PicBox1.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-                hand1PicBox2.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-                hand1PicBox3.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-                hand1PicBox4.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-                hand1PicBox5.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-
+                hand2Nums[0] = myDeckOfCards.currentCard;
                 hand2PicBox1.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand1Nums[1] = myDeckOfCards.currentCard;
+                hand1PicBox2.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand2Nums[1] = myDeckOfCards.currentCard;
                 hand2PicBox2.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand1Nums[2] = myDeckOfCards.currentCard;
+                hand1PicBox3.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand2Nums[2] = myDeckOfCards.currentCard;
                 hand2PicBox3.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand1Nums[3] = myDeckOfCards.currentCard;
+                hand1PicBox4.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand2Nums[3] = myDeckOfCards.currentCard;
                 hand2PicBox4.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand1Nums[4] = myDeckOfCards.currentCard;
+                hand1PicBox5.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                hand2Nums[4] = myDeckOfCards.currentCard;
                 hand2PicBox5.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+               
             }
         }
-
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private bool isFlush(ref int[]handGiven)
+        {
+            bool isFlush = false;
+            int suit = 0;
+            for (int i = 0; i < 5; i++)
+                for (int k = i + 1; k < 5; k++)
+                    if (myDeckOfCards.deck[handGiven[i]].Suit == myDeckOfCards.deck[handGiven[k]].Suit)
+                        suit++;
+            if (suit == 5)
+                isFlush = true;
+            return isFlush;
+        }
+
+        private string CheckPairs(ref int[]handGiven)
+        {
+            int faceVal = 0;
+            string returnFace = "";
+            for (int i = 0; i < 5; i++)
+                for (int k = i + 1; k < 5; k++)
+                    if (myDeckOfCards.deck[handGiven[i]].Face == myDeckOfCards.deck[handGiven[k]].Face)
+                    {
+                        returnFace = myDeckOfCards.deck[handGiven[i]].Face;
+                        faceVal++;
+                    }
+            if (faceVal == 1)
+                return "one pair of " + returnFace + "s";
+            else if (faceVal == 2)
+                return "two pairs\r\n";
+            else if (faceVal > 2)
+                return faceVal.ToString() + " of a kind";
+            else
+                return "nothing";
+        }
+        private void CheckHand()
+        {
+
+            // return last in else if statement, because it is lowest hand compared
+            hand1TextBox.Text = "Player 1 has " + CheckPairs(ref hand1Nums);
+            hand2TextBox.Text = "Player 2 has " + CheckPairs(ref hand2Nums);
+                
+
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (myDeckOfCards.currentCard >= 10)
+            {
+                CheckHand();
+            }
+            else
+            {
+                MessageBox.Show("Please deal cards first.");
+            }
         }
     }
 }

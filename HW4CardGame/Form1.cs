@@ -440,7 +440,7 @@ namespace HW4CardGame
                 hand1PB[newNums[i]].BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
             }
             //disable deal new card button
-            //hand1newCardButton.Enabled = false;
+            hand1newCardButton.Enabled = false;
         }
 
         private void hand2newCardButton_Click(object sender, EventArgs e)
@@ -476,7 +476,7 @@ namespace HW4CardGame
                 hand2PB[newNums[i]].BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
             }
             //disable deal new card button
-            //hand2newCardButton.Enabled = false;
+            hand2newCardButton.Enabled = false;
         }
         private void PrintHand(string player, int handVal)
         {

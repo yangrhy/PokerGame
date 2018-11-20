@@ -422,7 +422,7 @@
             // 
             // resultTextBox
             // 
-            this.resultTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resultTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resultTextBox.Location = new System.Drawing.Point(206, 121);
             this.resultTextBox.Multiline = true;
             this.resultTextBox.Name = "resultTextBox";

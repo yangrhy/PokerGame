@@ -42,14 +42,28 @@
             this.hand2PicBox2 = new System.Windows.Forms.PictureBox();
             this.hand2PicBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.compareTextBox = new System.Windows.Forms.RichTextBox();
+            this.hand2TextBox = new System.Windows.Forms.RichTextBox();
+            this.hand1TextBox = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateHandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.hand1TextBox = new System.Windows.Forms.RichTextBox();
-            this.hand2TextBox = new System.Windows.Forms.RichTextBox();
-            this.compareTextBox = new System.Windows.Forms.RichTextBox();
+            this.hand2CheckBox5 = new System.Windows.Forms.CheckBox();
+            this.hand2CheckBox4 = new System.Windows.Forms.CheckBox();
+            this.hand2CheckBox3 = new System.Windows.Forms.CheckBox();
+            this.hand2CheckBox2 = new System.Windows.Forms.CheckBox();
+            this.hand2CheckBox1 = new System.Windows.Forms.CheckBox();
+            this.hand1CheckBox5 = new System.Windows.Forms.CheckBox();
+            this.hand1CheckBox4 = new System.Windows.Forms.CheckBox();
+            this.hand1CheckBox3 = new System.Windows.Forms.CheckBox();
+            this.hand1CheckBox2 = new System.Windows.Forms.CheckBox();
+            this.hand1CheckBox1 = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hand1PicBox5)).BeginInit();
@@ -83,6 +97,13 @@
             // 
             this.tabPage1.BackgroundImage = global::HW4CardGame.Properties.Resources.poker_table;
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Controls.Add(this.hand1CheckBox5);
+            this.tabPage1.Controls.Add(this.hand1CheckBox4);
+            this.tabPage1.Controls.Add(this.hand1CheckBox3);
+            this.tabPage1.Controls.Add(this.hand1CheckBox2);
+            this.tabPage1.Controls.Add(this.hand1CheckBox1);
             this.tabPage1.Controls.Add(this.hand1PicBox5);
             this.tabPage1.Controls.Add(this.hand1PicBox4);
             this.tabPage1.Controls.Add(this.hand1PicBox3);
@@ -150,6 +171,13 @@
             // 
             this.tabPage2.BackgroundImage = global::HW4CardGame.Properties.Resources.poker_table;
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.label2);
+            this.tabPage2.Controls.Add(this.hand2CheckBox5);
+            this.tabPage2.Controls.Add(this.hand2CheckBox4);
+            this.tabPage2.Controls.Add(this.hand2CheckBox3);
+            this.tabPage2.Controls.Add(this.hand2CheckBox2);
+            this.tabPage2.Controls.Add(this.hand2CheckBox1);
             this.tabPage2.Controls.Add(this.hand2PicBox5);
             this.tabPage2.Controls.Add(this.hand2PicBox4);
             this.tabPage2.Controls.Add(this.hand2PicBox3);
@@ -228,6 +256,33 @@
             this.tabPage3.Text = "Result";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // compareTextBox
+            // 
+            this.compareTextBox.Location = new System.Drawing.Point(200, 191);
+            this.compareTextBox.Name = "compareTextBox";
+            this.compareTextBox.ReadOnly = true;
+            this.compareTextBox.Size = new System.Drawing.Size(368, 23);
+            this.compareTextBox.TabIndex = 2;
+            this.compareTextBox.Text = "";
+            // 
+            // hand2TextBox
+            // 
+            this.hand2TextBox.Location = new System.Drawing.Point(202, 156);
+            this.hand2TextBox.Name = "hand2TextBox";
+            this.hand2TextBox.ReadOnly = true;
+            this.hand2TextBox.Size = new System.Drawing.Size(368, 23);
+            this.hand2TextBox.TabIndex = 1;
+            this.hand2TextBox.Text = "";
+            // 
+            // hand1TextBox
+            // 
+            this.hand1TextBox.Location = new System.Drawing.Point(202, 124);
+            this.hand1TextBox.Name = "hand1TextBox";
+            this.hand1TextBox.ReadOnly = true;
+            this.hand1TextBox.Size = new System.Drawing.Size(368, 23);
+            this.hand1TextBox.TabIndex = 0;
+            this.hand1TextBox.Text = "";
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -258,8 +313,8 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
-            this.exitToolStripMenuItem.Text = "Evaluate Result";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
+            this.exitToolStripMenuItem.Text = "Determine Hand";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem1
@@ -269,32 +324,137 @@
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
-            // hand1TextBox
+            // hand2CheckBox5
             // 
-            this.hand1TextBox.Location = new System.Drawing.Point(202, 124);
-            this.hand1TextBox.Name = "hand1TextBox";
-            this.hand1TextBox.ReadOnly = true;
-            this.hand1TextBox.Size = new System.Drawing.Size(368, 23);
-            this.hand1TextBox.TabIndex = 0;
-            this.hand1TextBox.Text = "";
+            this.hand2CheckBox5.AutoSize = true;
+            this.hand2CheckBox5.Location = new System.Drawing.Point(541, 212);
+            this.hand2CheckBox5.Name = "hand2CheckBox5";
+            this.hand2CheckBox5.Size = new System.Drawing.Size(15, 14);
+            this.hand2CheckBox5.TabIndex = 14;
+            this.hand2CheckBox5.UseVisualStyleBackColor = true;
             // 
-            // hand2TextBox
+            // hand2CheckBox4
             // 
-            this.hand2TextBox.Location = new System.Drawing.Point(202, 156);
-            this.hand2TextBox.Name = "hand2TextBox";
-            this.hand2TextBox.ReadOnly = true;
-            this.hand2TextBox.Size = new System.Drawing.Size(368, 23);
-            this.hand2TextBox.TabIndex = 1;
-            this.hand2TextBox.Text = "";
+            this.hand2CheckBox4.AutoSize = true;
+            this.hand2CheckBox4.Location = new System.Drawing.Point(462, 212);
+            this.hand2CheckBox4.Name = "hand2CheckBox4";
+            this.hand2CheckBox4.Size = new System.Drawing.Size(15, 14);
+            this.hand2CheckBox4.TabIndex = 13;
+            this.hand2CheckBox4.UseVisualStyleBackColor = true;
             // 
-            // compareTextBox
+            // hand2CheckBox3
             // 
-            this.compareTextBox.Location = new System.Drawing.Point(200, 191);
-            this.compareTextBox.Name = "compareTextBox";
-            this.compareTextBox.ReadOnly = true;
-            this.compareTextBox.Size = new System.Drawing.Size(368, 23);
-            this.compareTextBox.TabIndex = 2;
-            this.compareTextBox.Text = "";
+            this.hand2CheckBox3.AutoSize = true;
+            this.hand2CheckBox3.Location = new System.Drawing.Point(382, 212);
+            this.hand2CheckBox3.Name = "hand2CheckBox3";
+            this.hand2CheckBox3.Size = new System.Drawing.Size(15, 14);
+            this.hand2CheckBox3.TabIndex = 12;
+            this.hand2CheckBox3.UseVisualStyleBackColor = true;
+            // 
+            // hand2CheckBox2
+            // 
+            this.hand2CheckBox2.AutoSize = true;
+            this.hand2CheckBox2.Location = new System.Drawing.Point(304, 212);
+            this.hand2CheckBox2.Name = "hand2CheckBox2";
+            this.hand2CheckBox2.Size = new System.Drawing.Size(15, 14);
+            this.hand2CheckBox2.TabIndex = 11;
+            this.hand2CheckBox2.UseVisualStyleBackColor = true;
+            // 
+            // hand2CheckBox1
+            // 
+            this.hand2CheckBox1.AutoSize = true;
+            this.hand2CheckBox1.Location = new System.Drawing.Point(219, 212);
+            this.hand2CheckBox1.Name = "hand2CheckBox1";
+            this.hand2CheckBox1.Size = new System.Drawing.Size(15, 14);
+            this.hand2CheckBox1.TabIndex = 10;
+            this.hand2CheckBox1.UseVisualStyleBackColor = true;
+            // 
+            // hand1CheckBox5
+            // 
+            this.hand1CheckBox5.AutoSize = true;
+            this.hand1CheckBox5.Location = new System.Drawing.Point(541, 212);
+            this.hand1CheckBox5.Name = "hand1CheckBox5";
+            this.hand1CheckBox5.Size = new System.Drawing.Size(15, 14);
+            this.hand1CheckBox5.TabIndex = 19;
+            this.hand1CheckBox5.UseVisualStyleBackColor = true;
+            // 
+            // hand1CheckBox4
+            // 
+            this.hand1CheckBox4.AutoSize = true;
+            this.hand1CheckBox4.Location = new System.Drawing.Point(462, 212);
+            this.hand1CheckBox4.Name = "hand1CheckBox4";
+            this.hand1CheckBox4.Size = new System.Drawing.Size(15, 14);
+            this.hand1CheckBox4.TabIndex = 18;
+            this.hand1CheckBox4.UseVisualStyleBackColor = true;
+            // 
+            // hand1CheckBox3
+            // 
+            this.hand1CheckBox3.AutoSize = true;
+            this.hand1CheckBox3.Location = new System.Drawing.Point(382, 212);
+            this.hand1CheckBox3.Name = "hand1CheckBox3";
+            this.hand1CheckBox3.Size = new System.Drawing.Size(15, 14);
+            this.hand1CheckBox3.TabIndex = 17;
+            this.hand1CheckBox3.UseVisualStyleBackColor = true;
+            // 
+            // hand1CheckBox2
+            // 
+            this.hand1CheckBox2.AutoSize = true;
+            this.hand1CheckBox2.Location = new System.Drawing.Point(304, 212);
+            this.hand1CheckBox2.Name = "hand1CheckBox2";
+            this.hand1CheckBox2.Size = new System.Drawing.Size(15, 14);
+            this.hand1CheckBox2.TabIndex = 16;
+            this.hand1CheckBox2.UseVisualStyleBackColor = true;
+            // 
+            // hand1CheckBox1
+            // 
+            this.hand1CheckBox1.AutoSize = true;
+            this.hand1CheckBox1.Location = new System.Drawing.Point(219, 212);
+            this.hand1CheckBox1.Name = "hand1CheckBox1";
+            this.hand1CheckBox1.Size = new System.Drawing.Size(15, 14);
+            this.hand1CheckBox1.TabIndex = 15;
+            this.hand1CheckBox1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(328, 232);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Choose Cards To Replace";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Window;
+            this.label2.Location = new System.Drawing.Point(328, 232);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(132, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Choose Cards To Replace";
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.ForestGreen;
+            this.button1.ForeColor = System.Drawing.SystemColors.Window;
+            this.button1.Location = new System.Drawing.Point(342, 256);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 27);
+            this.button1.TabIndex = 21;
+            this.button1.Text = "Deal New Cards";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.ForestGreen;
+            this.button2.ForeColor = System.Drawing.SystemColors.Window;
+            this.button2.Location = new System.Drawing.Point(342, 256);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 27);
+            this.button2.TabIndex = 22;
+            this.button2.Text = "Deal New Cards";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // Form1
             // 
@@ -309,12 +469,14 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hand1PicBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1PicBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1PicBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1PicBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand1PicBox1)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hand2PicBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand2PicBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.hand2PicBox3)).EndInit();
@@ -352,6 +514,20 @@
         private System.Windows.Forms.RichTextBox hand1TextBox;
         private System.Windows.Forms.RichTextBox compareTextBox;
         private System.Windows.Forms.RichTextBox hand2TextBox;
+        private System.Windows.Forms.CheckBox hand2CheckBox5;
+        private System.Windows.Forms.CheckBox hand2CheckBox4;
+        private System.Windows.Forms.CheckBox hand2CheckBox3;
+        private System.Windows.Forms.CheckBox hand2CheckBox2;
+        private System.Windows.Forms.CheckBox hand2CheckBox1;
+        private System.Windows.Forms.CheckBox hand1CheckBox5;
+        private System.Windows.Forms.CheckBox hand1CheckBox4;
+        private System.Windows.Forms.CheckBox hand1CheckBox3;
+        private System.Windows.Forms.CheckBox hand1CheckBox2;
+        private System.Windows.Forms.CheckBox hand1CheckBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
 

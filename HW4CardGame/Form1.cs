@@ -177,7 +177,7 @@ namespace HW4CardGame
         }
 
         // returns true if straight exists
-        private bool isStraight(ref int[]handGiven)
+        private bool isStraight(ref int[] handGiven)
         {
             bool isStraight = false;
             List<int> numFaceRanks = new List<int>();
@@ -189,14 +189,18 @@ namespace HW4CardGame
 
             numFaceRanks.Sort();
 
-            for (int i = 4; i >= 0; i--)
+            for (int i = 4; i > 0; i--)
             {
-                if (numFaceRanks[i] - numFaceRanks[i-1] == 1)
+                if (numFaceRanks[i] - numFaceRanks[i - 1] == 1)
                 {
-
+                    isStraight = true;
+                }
+                else
+                {
+                    isStraight = false;
                 }
             }
-           
+                       
             return isStraight;
         }
 
@@ -272,19 +276,33 @@ namespace HW4CardGame
                 return false;
         }
 
-        private void CheckHand()
+        private void CheckHand(ref int[]handGiven)
         {
             // return last in else if statement, because it is lowest hand compared
-            if (isFlush(ref hand1Nums))
-            { 
-}
+            if (isFlush(ref handGiven))
+            {
+                hand1TextBox.Text = "Player one has flush";
+            }
+            else if (isStraight(ref handGiven))
+            {
+                hand1TextBox.Text = "Player one has straight";
+            }
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //if currentCard >= 10 then that means cards have been dealt and hands are in play
             if (myDeckOfCards.currentCard >= 10)
             {
-                CheckHand();
+                // Send correct hand array depending on which tab is selected
+                if (tabControl1.SelectedTab == tabControl1.TabPages["Player 1 Hand"])
+                {
+                    CheckHand(ref hand1Nums);
+                }
+                else
+                {
+                    CheckHand(ref hand2Nums);
+                }
             }
             else
             {

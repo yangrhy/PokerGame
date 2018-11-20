@@ -18,8 +18,9 @@ namespace HW4CardGame
         int[] hand1Nums = new int[5];
         int[] hand2Nums = new int[5];
 
-        //string returnFace = ""; //return face of card (need for 
-        // string returnSuit = ""; // return suit
+        //pictureBox arrays to make it easier to assign cards to pictureBoxes
+        PictureBox[] hand1PB = new PictureBox[5];
+        PictureBox[] hand2PB = new PictureBox[5];
 
         // Dictionary created to get correct image corresponding to what card is dealt
         public Dictionary<string, Image> cardToImage = new Dictionary<string, Image>()
@@ -111,6 +112,9 @@ namespace HW4CardGame
         private void Form1_Load(object sender, EventArgs e)
         {
             myDeckOfCards.Shuffle();
+            hand1newCardButton.Enabled = false;
+            hand2newCardButton.Enabled = false;
+
         }
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -127,35 +131,31 @@ namespace HW4CardGame
         // this makes it easier to then exchange cards later, because we can store the new integers into hand[index]
         // also deals by alternating cards from player 1 to player 2 instead of 5 straight to player 1 then player 2
         private void generateHandsToolStripMenuItem_Click(object sender, EventArgs e)
-        {         
+        {   
+            // set existing pictureboxes into the array of pictureboxes for each hand
+            for (int i = 0; i < 5; i++)
+            {
+                hand1PB[i] = (PictureBox)Controls.Find("hand1PicBox" + (i + 1).ToString(), true)[0];
+                hand2PB[i] = (PictureBox)Controls.Find("hand2PicBox" + (i + 1).ToString(), true)[0];
+            }
+
             while (myDeckOfCards.currentCard <= 10)
             {
-                hand1Nums[0] = myDeckOfCards.currentCard;
-                hand1PicBox1.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-                hand2Nums[0] = myDeckOfCards.currentCard;
-                hand2PicBox1.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-
-                hand1Nums[1] = myDeckOfCards.currentCard;
-                hand1PicBox2.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-                hand2Nums[1] = myDeckOfCards.currentCard;
-                hand2PicBox2.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-
-                hand1Nums[2] = myDeckOfCards.currentCard;
-                hand1PicBox3.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-                hand2Nums[2] = myDeckOfCards.currentCard;
-                hand2PicBox3.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-
-                hand1Nums[3] = myDeckOfCards.currentCard;
-                hand1PicBox4.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-                hand2Nums[3] = myDeckOfCards.currentCard;
-                hand2PicBox4.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-
-                hand1Nums[4] = myDeckOfCards.currentCard;
-                hand1PicBox5.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-                hand2Nums[4] = myDeckOfCards.currentCard;
-                hand2PicBox5.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];               
+                for (int i = 0; i < 5; i++)
+                {
+                    hand1Nums[i] = myDeckOfCards.currentCard;
+                    hand1PB[i].BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                    hand2Nums[i] = myDeckOfCards.currentCard;
+                    hand2PB[i].BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+                }
             }
+            // enable deal new card buttons
+            hand1newCardButton.Enabled = true;
+            hand2newCardButton.Enabled = true;
+            //disable deal hands
+            generateHandsToolStripMenuItem.Enabled = false;
         }
+
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -205,7 +205,7 @@ namespace HW4CardGame
         }
 
         // returns if four of a kind exists if faceVal >= 4
-        private bool isFourOfKind(ref int[] handGiven)
+        private bool isQuads(ref int[] handGiven)
         {
             int faceVal = 0;
             //returnFace = "";
@@ -223,7 +223,7 @@ namespace HW4CardGame
         }
 
         // returns if three of a kind exists if faceVal == 3
-        private bool isThreeOfKind(ref int[] handGiven)
+        private bool isTrips(ref int[] handGiven)
         {
             int faceVal = 0;
            // returnFace = "";
@@ -257,8 +257,7 @@ namespace HW4CardGame
             else
                 return false;
         }
-
-
+        
         private bool isPair(ref int[]handGiven)
         {
             int faceVal = 0;
@@ -276,38 +275,137 @@ namespace HW4CardGame
                 return false;
         }
 
-        private void CheckHand(ref int[]handGiven)
+        private int CheckHand(ref int[]handGiven)
         {
-            // return last in else if statement, because it is lowest hand compared
-            if (isFlush(ref handGiven))
+            // return int to give hand a numerical value to compare with other hand
+            if (isFlush(ref handGiven) && (isStraight(ref handGiven)))
             {
-                hand1TextBox.Text = "Player one has flush";
+                return 7;
+            }
+            else if (isFlush(ref handGiven))
+            {
+                return 6;
             }
             else if (isStraight(ref handGiven))
             {
-                hand1TextBox.Text = "Player one has straight";
+                return 5;
             }
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //if currentCard >= 10 then that means cards have been dealt and hands are in play
-            if (myDeckOfCards.currentCard >= 10)
+            else if (isQuads(ref handGiven))
             {
-                // Send correct hand array depending on which tab is selected
-                if (tabControl1.SelectedTab == tabControl1.TabPages["Player 1 Hand"])
-                {
-                    CheckHand(ref hand1Nums);
-                }
-                else
-                {
-                    CheckHand(ref hand2Nums);
-                }
+                return 4;
+            }
+            else if (isTrips(ref handGiven))
+            {
+                return 3;
+            }
+            else if (isTwoPair(ref handGiven))
+            {
+                return 2;
+            }
+            else if (isPair(ref handGiven))
+            {
+                return 1;
             }
             else
             {
-                MessageBox.Show("Please deal cards first.");
+                return 0; //nothing
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<int> newNums = new List<int>();
+
+            if (hand1CheckBox1.Checked == false)
+            {
+                newNums.Add(0);
+            }
+            if (hand1CheckBox2.Checked == false)
+            {
+                newNums.Add(1);
+            }
+            if (hand1CheckBox3.Checked == false)
+            {
+                newNums.Add(2);
+            }
+            if (hand1CheckBox4.Checked == false)
+            {
+                newNums.Add(3);
+            }
+            if (hand1CheckBox5.Checked == false)
+            {
+                newNums.Add(4);
+            }
+
+            for (int i = 0; i < newNums.Count; i++)
+            {
+                // handNums[whatever this element is] so the card at that position can get a new card
+                hand1Nums[newNums[i]] = myDeckOfCards.currentCard;
+                hand1PB[newNums[i]].BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+            }
+            //disable deal new card button
+            hand1newCardButton.Enabled = false;
+        }
+
+        private void hand2newCardButton_Click(object sender, EventArgs e)
+        {
+            List<int> newNums = new List<int>();
+
+            if (hand2CheckBox1.Checked == false)
+            {
+                newNums.Add(0);
+            }
+            if (hand2CheckBox2.Checked == false)
+            {
+                newNums.Add(1);
+            }
+            if (hand2CheckBox3.Checked == false)
+            {
+                newNums.Add(2);
+            }
+            if (hand2CheckBox4.Checked == false)
+            {
+                newNums.Add(3);
+            }
+            if (hand2CheckBox5.Checked == false)
+            {
+                newNums.Add(4);
+            }
+
+            for (int i = 0; i < newNums.Count; i++)
+            {
+                // handNums[whatever this element is] so the card at that position can get a new card
+                hand2Nums[newNums[i]] = myDeckOfCards.currentCard;
+                hand2PB[newNums[i]].BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+            }
+            //disable deal new card button
+            hand2newCardButton.Enabled = false;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //send array of each hand to CheckHand and receive value for hand strength
+            int hand1Value = CheckHand(ref hand1Nums);
+            int hand2Value = CheckHand(ref hand2Nums);
+
+                    /*
+           //if currentCard >= 10 then that means cards have been dealt and hands are in play
+           if (myDeckOfCards.currentCard >= 10)
+           {
+               // Send correct hand array depending on which tab is selected
+               if (tabControl1.SelectedTab == tabControl1.TabPages["Player 1 Hand"])
+               {
+                   CheckHand(ref hand1Nums);
+               }
+               else if (tabControl1.SelectedTab == tabControl1.TabPages["Player 2 Hand"])
+               {
+                   CheckHand(ref hand2Nums);
+               }
+           }
+           else
+           {
+               MessageBox.Show("Please deal cards first.");
+           }*/
         }
     }
 }

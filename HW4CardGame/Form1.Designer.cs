@@ -30,12 +30,26 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.hand1newCardButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.hand1CheckBox5 = new System.Windows.Forms.CheckBox();
+            this.hand1CheckBox4 = new System.Windows.Forms.CheckBox();
+            this.hand1CheckBox3 = new System.Windows.Forms.CheckBox();
+            this.hand1CheckBox2 = new System.Windows.Forms.CheckBox();
+            this.hand1CheckBox1 = new System.Windows.Forms.CheckBox();
             this.hand1PicBox5 = new System.Windows.Forms.PictureBox();
             this.hand1PicBox4 = new System.Windows.Forms.PictureBox();
             this.hand1PicBox3 = new System.Windows.Forms.PictureBox();
             this.hand1PicBox2 = new System.Windows.Forms.PictureBox();
             this.hand1PicBox1 = new System.Windows.Forms.PictureBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.hand2newCardButton = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.hand2CheckBox5 = new System.Windows.Forms.CheckBox();
+            this.hand2CheckBox4 = new System.Windows.Forms.CheckBox();
+            this.hand2CheckBox3 = new System.Windows.Forms.CheckBox();
+            this.hand2CheckBox2 = new System.Windows.Forms.CheckBox();
+            this.hand2CheckBox1 = new System.Windows.Forms.CheckBox();
             this.hand2PicBox5 = new System.Windows.Forms.PictureBox();
             this.hand2PicBox4 = new System.Windows.Forms.PictureBox();
             this.hand2PicBox3 = new System.Windows.Forms.PictureBox();
@@ -48,22 +62,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generateHandsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.hand2CheckBox5 = new System.Windows.Forms.CheckBox();
-            this.hand2CheckBox4 = new System.Windows.Forms.CheckBox();
-            this.hand2CheckBox3 = new System.Windows.Forms.CheckBox();
-            this.hand2CheckBox2 = new System.Windows.Forms.CheckBox();
-            this.hand2CheckBox1 = new System.Windows.Forms.CheckBox();
-            this.hand1CheckBox5 = new System.Windows.Forms.CheckBox();
-            this.hand1CheckBox4 = new System.Windows.Forms.CheckBox();
-            this.hand1CheckBox3 = new System.Windows.Forms.CheckBox();
-            this.hand1CheckBox2 = new System.Windows.Forms.CheckBox();
-            this.hand1CheckBox1 = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hand1PicBox5)).BeginInit();
@@ -97,7 +97,7 @@
             // 
             this.tabPage1.BackgroundImage = global::HW4CardGame.Properties.Resources.poker_table;
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.hand1newCardButton);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.hand1CheckBox5);
             this.tabPage1.Controls.Add(this.hand1CheckBox4);
@@ -116,6 +116,73 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Player 1 Hand";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // hand1newCardButton
+            // 
+            this.hand1newCardButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.hand1newCardButton.ForeColor = System.Drawing.SystemColors.Window;
+            this.hand1newCardButton.Location = new System.Drawing.Point(342, 256);
+            this.hand1newCardButton.Name = "hand1newCardButton";
+            this.hand1newCardButton.Size = new System.Drawing.Size(100, 27);
+            this.hand1newCardButton.TabIndex = 21;
+            this.hand1newCardButton.Text = "Deal New Cards";
+            this.hand1newCardButton.UseVisualStyleBackColor = false;
+            this.hand1newCardButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(328, 232);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 13);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Choose Cards To Hold";
+            // 
+            // hand1CheckBox5
+            // 
+            this.hand1CheckBox5.AutoSize = true;
+            this.hand1CheckBox5.Location = new System.Drawing.Point(541, 212);
+            this.hand1CheckBox5.Name = "hand1CheckBox5";
+            this.hand1CheckBox5.Size = new System.Drawing.Size(15, 14);
+            this.hand1CheckBox5.TabIndex = 19;
+            this.hand1CheckBox5.UseVisualStyleBackColor = true;
+            // 
+            // hand1CheckBox4
+            // 
+            this.hand1CheckBox4.AutoSize = true;
+            this.hand1CheckBox4.Location = new System.Drawing.Point(462, 212);
+            this.hand1CheckBox4.Name = "hand1CheckBox4";
+            this.hand1CheckBox4.Size = new System.Drawing.Size(15, 14);
+            this.hand1CheckBox4.TabIndex = 18;
+            this.hand1CheckBox4.UseVisualStyleBackColor = true;
+            // 
+            // hand1CheckBox3
+            // 
+            this.hand1CheckBox3.AutoSize = true;
+            this.hand1CheckBox3.Location = new System.Drawing.Point(382, 212);
+            this.hand1CheckBox3.Name = "hand1CheckBox3";
+            this.hand1CheckBox3.Size = new System.Drawing.Size(15, 14);
+            this.hand1CheckBox3.TabIndex = 17;
+            this.hand1CheckBox3.UseVisualStyleBackColor = true;
+            // 
+            // hand1CheckBox2
+            // 
+            this.hand1CheckBox2.AutoSize = true;
+            this.hand1CheckBox2.Location = new System.Drawing.Point(304, 212);
+            this.hand1CheckBox2.Name = "hand1CheckBox2";
+            this.hand1CheckBox2.Size = new System.Drawing.Size(15, 14);
+            this.hand1CheckBox2.TabIndex = 16;
+            this.hand1CheckBox2.UseVisualStyleBackColor = true;
+            // 
+            // hand1CheckBox1
+            // 
+            this.hand1CheckBox1.AutoSize = true;
+            this.hand1CheckBox1.Location = new System.Drawing.Point(219, 212);
+            this.hand1CheckBox1.Name = "hand1CheckBox1";
+            this.hand1CheckBox1.Size = new System.Drawing.Size(15, 14);
+            this.hand1CheckBox1.TabIndex = 15;
+            this.hand1CheckBox1.UseVisualStyleBackColor = true;
             // 
             // hand1PicBox5
             // 
@@ -171,7 +238,7 @@
             // 
             this.tabPage2.BackgroundImage = global::HW4CardGame.Properties.Resources.poker_table;
             this.tabPage2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.hand2newCardButton);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.hand2CheckBox5);
             this.tabPage2.Controls.Add(this.hand2CheckBox4);
@@ -190,6 +257,73 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Player 2 Hand";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // hand2newCardButton
+            // 
+            this.hand2newCardButton.BackColor = System.Drawing.Color.ForestGreen;
+            this.hand2newCardButton.ForeColor = System.Drawing.SystemColors.Window;
+            this.hand2newCardButton.Location = new System.Drawing.Point(342, 256);
+            this.hand2newCardButton.Name = "hand2newCardButton";
+            this.hand2newCardButton.Size = new System.Drawing.Size(100, 27);
+            this.hand2newCardButton.TabIndex = 22;
+            this.hand2newCardButton.Text = "Deal New Cards";
+            this.hand2newCardButton.UseVisualStyleBackColor = false;
+            this.hand2newCardButton.Click += new System.EventHandler(this.hand2newCardButton_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.Window;
+            this.label2.Location = new System.Drawing.Point(328, 232);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(114, 13);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Choose Cards To Hold";
+            // 
+            // hand2CheckBox5
+            // 
+            this.hand2CheckBox5.AutoSize = true;
+            this.hand2CheckBox5.Location = new System.Drawing.Point(541, 212);
+            this.hand2CheckBox5.Name = "hand2CheckBox5";
+            this.hand2CheckBox5.Size = new System.Drawing.Size(15, 14);
+            this.hand2CheckBox5.TabIndex = 14;
+            this.hand2CheckBox5.UseVisualStyleBackColor = true;
+            // 
+            // hand2CheckBox4
+            // 
+            this.hand2CheckBox4.AutoSize = true;
+            this.hand2CheckBox4.Location = new System.Drawing.Point(462, 212);
+            this.hand2CheckBox4.Name = "hand2CheckBox4";
+            this.hand2CheckBox4.Size = new System.Drawing.Size(15, 14);
+            this.hand2CheckBox4.TabIndex = 13;
+            this.hand2CheckBox4.UseVisualStyleBackColor = true;
+            // 
+            // hand2CheckBox3
+            // 
+            this.hand2CheckBox3.AutoSize = true;
+            this.hand2CheckBox3.Location = new System.Drawing.Point(382, 212);
+            this.hand2CheckBox3.Name = "hand2CheckBox3";
+            this.hand2CheckBox3.Size = new System.Drawing.Size(15, 14);
+            this.hand2CheckBox3.TabIndex = 12;
+            this.hand2CheckBox3.UseVisualStyleBackColor = true;
+            // 
+            // hand2CheckBox2
+            // 
+            this.hand2CheckBox2.AutoSize = true;
+            this.hand2CheckBox2.Location = new System.Drawing.Point(304, 212);
+            this.hand2CheckBox2.Name = "hand2CheckBox2";
+            this.hand2CheckBox2.Size = new System.Drawing.Size(15, 14);
+            this.hand2CheckBox2.TabIndex = 11;
+            this.hand2CheckBox2.UseVisualStyleBackColor = true;
+            // 
+            // hand2CheckBox1
+            // 
+            this.hand2CheckBox1.AutoSize = true;
+            this.hand2CheckBox1.Location = new System.Drawing.Point(219, 212);
+            this.hand2CheckBox1.Name = "hand2CheckBox1";
+            this.hand2CheckBox1.Size = new System.Drawing.Size(15, 14);
+            this.hand2CheckBox1.TabIndex = 10;
+            this.hand2CheckBox1.UseVisualStyleBackColor = true;
             // 
             // hand2PicBox5
             // 
@@ -245,6 +379,7 @@
             // 
             this.tabPage3.BackgroundImage = global::HW4CardGame.Properties.Resources.poker_table;
             this.tabPage3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.tabPage3.Controls.Add(this.button1);
             this.tabPage3.Controls.Add(this.compareTextBox);
             this.tabPage3.Controls.Add(this.hand2TextBox);
             this.tabPage3.Controls.Add(this.hand1TextBox);
@@ -288,7 +423,6 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newGameToolStripMenuItem,
             this.generateHandsToolStripMenuItem,
-            this.exitToolStripMenuItem,
             this.exitToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -310,129 +444,12 @@
             this.generateHandsToolStripMenuItem.Text = "Deal Cards";
             this.generateHandsToolStripMenuItem.Click += new System.EventHandler(this.generateHandsToolStripMenuItem_Click);
             // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(106, 20);
-            this.exitToolStripMenuItem.Text = "Determine Hand";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
             this.exitToolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
-            // 
-            // hand2CheckBox5
-            // 
-            this.hand2CheckBox5.AutoSize = true;
-            this.hand2CheckBox5.Location = new System.Drawing.Point(541, 212);
-            this.hand2CheckBox5.Name = "hand2CheckBox5";
-            this.hand2CheckBox5.Size = new System.Drawing.Size(15, 14);
-            this.hand2CheckBox5.TabIndex = 14;
-            this.hand2CheckBox5.UseVisualStyleBackColor = true;
-            // 
-            // hand2CheckBox4
-            // 
-            this.hand2CheckBox4.AutoSize = true;
-            this.hand2CheckBox4.Location = new System.Drawing.Point(462, 212);
-            this.hand2CheckBox4.Name = "hand2CheckBox4";
-            this.hand2CheckBox4.Size = new System.Drawing.Size(15, 14);
-            this.hand2CheckBox4.TabIndex = 13;
-            this.hand2CheckBox4.UseVisualStyleBackColor = true;
-            // 
-            // hand2CheckBox3
-            // 
-            this.hand2CheckBox3.AutoSize = true;
-            this.hand2CheckBox3.Location = new System.Drawing.Point(382, 212);
-            this.hand2CheckBox3.Name = "hand2CheckBox3";
-            this.hand2CheckBox3.Size = new System.Drawing.Size(15, 14);
-            this.hand2CheckBox3.TabIndex = 12;
-            this.hand2CheckBox3.UseVisualStyleBackColor = true;
-            // 
-            // hand2CheckBox2
-            // 
-            this.hand2CheckBox2.AutoSize = true;
-            this.hand2CheckBox2.Location = new System.Drawing.Point(304, 212);
-            this.hand2CheckBox2.Name = "hand2CheckBox2";
-            this.hand2CheckBox2.Size = new System.Drawing.Size(15, 14);
-            this.hand2CheckBox2.TabIndex = 11;
-            this.hand2CheckBox2.UseVisualStyleBackColor = true;
-            // 
-            // hand2CheckBox1
-            // 
-            this.hand2CheckBox1.AutoSize = true;
-            this.hand2CheckBox1.Location = new System.Drawing.Point(219, 212);
-            this.hand2CheckBox1.Name = "hand2CheckBox1";
-            this.hand2CheckBox1.Size = new System.Drawing.Size(15, 14);
-            this.hand2CheckBox1.TabIndex = 10;
-            this.hand2CheckBox1.UseVisualStyleBackColor = true;
-            // 
-            // hand1CheckBox5
-            // 
-            this.hand1CheckBox5.AutoSize = true;
-            this.hand1CheckBox5.Location = new System.Drawing.Point(541, 212);
-            this.hand1CheckBox5.Name = "hand1CheckBox5";
-            this.hand1CheckBox5.Size = new System.Drawing.Size(15, 14);
-            this.hand1CheckBox5.TabIndex = 19;
-            this.hand1CheckBox5.UseVisualStyleBackColor = true;
-            // 
-            // hand1CheckBox4
-            // 
-            this.hand1CheckBox4.AutoSize = true;
-            this.hand1CheckBox4.Location = new System.Drawing.Point(462, 212);
-            this.hand1CheckBox4.Name = "hand1CheckBox4";
-            this.hand1CheckBox4.Size = new System.Drawing.Size(15, 14);
-            this.hand1CheckBox4.TabIndex = 18;
-            this.hand1CheckBox4.UseVisualStyleBackColor = true;
-            // 
-            // hand1CheckBox3
-            // 
-            this.hand1CheckBox3.AutoSize = true;
-            this.hand1CheckBox3.Location = new System.Drawing.Point(382, 212);
-            this.hand1CheckBox3.Name = "hand1CheckBox3";
-            this.hand1CheckBox3.Size = new System.Drawing.Size(15, 14);
-            this.hand1CheckBox3.TabIndex = 17;
-            this.hand1CheckBox3.UseVisualStyleBackColor = true;
-            // 
-            // hand1CheckBox2
-            // 
-            this.hand1CheckBox2.AutoSize = true;
-            this.hand1CheckBox2.Location = new System.Drawing.Point(304, 212);
-            this.hand1CheckBox2.Name = "hand1CheckBox2";
-            this.hand1CheckBox2.Size = new System.Drawing.Size(15, 14);
-            this.hand1CheckBox2.TabIndex = 16;
-            this.hand1CheckBox2.UseVisualStyleBackColor = true;
-            // 
-            // hand1CheckBox1
-            // 
-            this.hand1CheckBox1.AutoSize = true;
-            this.hand1CheckBox1.Location = new System.Drawing.Point(219, 212);
-            this.hand1CheckBox1.Name = "hand1CheckBox1";
-            this.hand1CheckBox1.Size = new System.Drawing.Size(15, 14);
-            this.hand1CheckBox1.TabIndex = 15;
-            this.hand1CheckBox1.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(328, 232);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 13);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Choose Cards To Replace";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.Window;
-            this.label2.Location = new System.Drawing.Point(328, 232);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(132, 13);
-            this.label2.TabIndex = 21;
-            this.label2.Text = "Choose Cards To Replace";
             // 
             // button1
             // 
@@ -441,20 +458,10 @@
             this.button1.Location = new System.Drawing.Point(342, 256);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 27);
-            this.button1.TabIndex = 21;
-            this.button1.Text = "Deal New Cards";
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Determine Hands";
             this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.ForestGreen;
-            this.button2.ForeColor = System.Drawing.SystemColors.Window;
-            this.button2.Location = new System.Drawing.Point(342, 256);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(100, 27);
-            this.button2.TabIndex = 22;
-            this.button2.Text = "Deal New Cards";
-            this.button2.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // Form1
             // 
@@ -509,7 +516,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem generateHandsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem1;
         private System.Windows.Forms.RichTextBox hand1TextBox;
         private System.Windows.Forms.RichTextBox compareTextBox;
@@ -526,8 +532,9 @@
         private System.Windows.Forms.CheckBox hand1CheckBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button hand1newCardButton;
+        private System.Windows.Forms.Button hand2newCardButton;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
     }
 }
 

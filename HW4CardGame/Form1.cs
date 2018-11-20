@@ -187,6 +187,29 @@ namespace HW4CardGame
             return isRoyal;
         }
 
+        // return is full house exists
+        private bool isFullHouse(ref int[] handGiven)
+        {
+            List<int> numFaceRanks = new List<int>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                numFaceRanks.Add(faceRank[myDeckOfCards.deck[handGiven[i]].Face]);
+            }
+
+            numFaceRanks.Sort();
+
+            if (((numFaceRanks[0] == numFaceRanks[1] && numFaceRanks[0] == numFaceRanks[2] && numFaceRanks[3] == numFaceRanks[4])) ||
+                (numFaceRanks[0] == numFaceRanks[1] && numFaceRanks[2] == numFaceRanks[3] && numFaceRanks[2] == numFaceRanks[4]))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         // return if flush exists by checking that each card's Suit is the same
         private bool isFlush(ref int[] handGiven)
         {
@@ -262,19 +285,24 @@ namespace HW4CardGame
         // returns if four of a kind exists if faceVal >= 4
         private bool isQuads(ref int[] handGiven)
         {
-            int faceVal = 0;
-            // returnFace = "";
+            List<int> numFaceRanks = new List<int>();
+
             for (int i = 0; i < 5; i++)
-                for (int k = i + 1; k < 5; k++)
-                    if (myDeckOfCards.deck[handGiven[i]].Face == myDeckOfCards.deck[handGiven[k]].Face)
-                    {
-                        // returnFace = myDeckOfCards.deck[handGiven[i]].Face;
-                        faceVal++;
-                    }
-            if (faceVal == 4)
+            {
+                numFaceRanks.Add(faceRank[myDeckOfCards.deck[handGiven[i]].Face]);
+            }
+
+            numFaceRanks.Sort();
+
+            if (((numFaceRanks[0] == numFaceRanks[1] && numFaceRanks[0] == numFaceRanks[2] && numFaceRanks[0] == numFaceRanks[3])) ||
+                (numFaceRanks[4] == numFaceRanks[1] && numFaceRanks[4] == numFaceRanks[3] && numFaceRanks[4] == numFaceRanks[1]))
+            {
                 return true;
+            }
             else
+            {
                 return false;
+            }
         }
 
         // returns if three of a kind exists if faceVal == 3
@@ -349,7 +377,7 @@ namespace HW4CardGame
                 return 7;
             }
             // full house
-            else if ((isTwoPair(ref handGiven)) && (isTrips(ref handGiven)))
+            else if (isFullHouse(ref handGiven))
             {
                 return 6;
             }
@@ -507,7 +535,7 @@ namespace HW4CardGame
                 }
                 else
                 {
-                    resultTextBox.Text += "Tie Game!";
+                    resultTextBox.Text += "Let's call it a tie game for now! Thanks for understanding";
                 }
             }
             else

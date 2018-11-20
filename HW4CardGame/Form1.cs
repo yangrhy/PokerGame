@@ -14,10 +14,12 @@ namespace HW4CardGame
     {
         DeckOfCards myDeckOfCards = new DeckOfCards();
 
-        // int array to keep track of DeckOfCards.deck[num]
-        // stores 1,2,3,4,5 and deck[1] = card that was given to that hand
+        // int arrays to keep track of DeckOfCards.deck[index] for each hand
         int[] hand1Nums = new int[5];
         int[] hand2Nums = new int[5];
+
+        //string returnFace = ""; //return face of card (need for 
+        // string returnSuit = ""; // return suit
 
         // Dictionary created to get correct image corresponding to what card is dealt
         public Dictionary<string, Image> cardToImage = new Dictionary<string, Image>()
@@ -76,6 +78,31 @@ namespace HW4CardGame
             {"Spades King", Properties.Resources.sk },
         };
 
+        public Dictionary<string, int> suitRank = new Dictionary<string, int>()
+        {
+            {"Clubs", 1 },
+            {"Diamonds", 2 },
+            {"Hearts", 3 },
+            {"Spades", 4 },
+        };
+
+        public Dictionary<string, int> faceRank = new Dictionary<string, int>()
+        {
+            {"Deuce", 2 },
+            {"Three", 3 },
+            {"Four", 4 },
+            {"Five", 5 },
+            {"Six", 6 },
+            {"Seven", 7 },
+            {"Eight", 8 },
+            {"Nine", 9 },
+            {"Ten", 10 },
+            {"Jack", 11 },
+            {"Queen", 12 },
+            {"King", 13 },
+            {"Ace", 14 },
+        };
+
         public Form1()
         {
             InitializeComponent();
@@ -94,7 +121,7 @@ namespace HW4CardGame
             myDeckOfCards.Shuffle(); // reshuffle the deck
         }
 
-        // deals current card in deck/increments in class
+        // deals current card in deck/increments in class and shows correct image for each card into picturebox
         // while setting array of int to hand1 and hand2
         // thus creating a "hand" for hand 1 and 2 by being able to retrieve deck.value at hand[index]
         // this makes it easier to then exchange cards later, because we can store the new integers into hand[index]
@@ -107,23 +134,26 @@ namespace HW4CardGame
                 hand1PicBox1.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
                 hand2Nums[0] = myDeckOfCards.currentCard;
                 hand2PicBox1.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+
                 hand1Nums[1] = myDeckOfCards.currentCard;
                 hand1PicBox2.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
                 hand2Nums[1] = myDeckOfCards.currentCard;
                 hand2PicBox2.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+
                 hand1Nums[2] = myDeckOfCards.currentCard;
                 hand1PicBox3.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
                 hand2Nums[2] = myDeckOfCards.currentCard;
                 hand2PicBox3.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+
                 hand1Nums[3] = myDeckOfCards.currentCard;
                 hand1PicBox4.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
                 hand2Nums[3] = myDeckOfCards.currentCard;
                 hand2PicBox4.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
+
                 hand1Nums[4] = myDeckOfCards.currentCard;
                 hand1PicBox5.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
                 hand2Nums[4] = myDeckOfCards.currentCard;
-                hand2PicBox5.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
-               
+                hand2PicBox5.BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];               
             }
         }
         private void exitToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -146,34 +176,108 @@ namespace HW4CardGame
             return isFlush;
         }
 
-        private string CheckPairs(ref int[]handGiven)
+        // returns true if straight exists
+        private bool isStraight(ref int[]handGiven)
+        {
+            bool isStraight = false;
+            List<int> numFaceRanks = new List<int>();
+
+            for (int i = 0; i < 5; i++)
+            {
+                numFaceRanks.Add(faceRank[myDeckOfCards.deck[handGiven[i]].Face]);
+            }
+
+            numFaceRanks.Sort();
+
+            for (int i = 4; i >= 0; i--)
+            {
+                if (numFaceRanks[i] - numFaceRanks[i-1] == 1)
+                {
+
+                }
+            }
+           
+            return isStraight;
+        }
+
+        // returns if four of a kind exists if faceVal >= 4
+        private bool isFourOfKind(ref int[] handGiven)
         {
             int faceVal = 0;
-            string returnFace = "";
+            //returnFace = "";
             for (int i = 0; i < 5; i++)
                 for (int k = i + 1; k < 5; k++)
                     if (myDeckOfCards.deck[handGiven[i]].Face == myDeckOfCards.deck[handGiven[k]].Face)
                     {
-                        returnFace = myDeckOfCards.deck[handGiven[i]].Face;
+                        //returnFace = myDeckOfCards.deck[handGiven[i]].Face;
+                        faceVal++;
+                    }
+            if (faceVal >= 4)
+                return true;
+            else
+                return false;
+        }
+
+        // returns if three of a kind exists if faceVal == 3
+        private bool isThreeOfKind(ref int[] handGiven)
+        {
+            int faceVal = 0;
+           // returnFace = "";
+            for (int i = 0; i < 5; i++)
+                for (int k = i + 1; k < 5; k++)
+                    if (myDeckOfCards.deck[handGiven[i]].Face == myDeckOfCards.deck[handGiven[k]].Face)
+                    {
+                       // returnFace = myDeckOfCards.deck[handGiven[i]].Face;
+                        faceVal++;
+                    }
+            if (faceVal == 3)
+                return true;
+            else
+                return false;
+        }
+
+        // returns if two pairs exists if faceVal == 2
+        private bool isTwoPair(ref int[] handGiven)
+        {
+            int faceVal = 0;
+           // returnFace = "";
+            for (int i = 0; i < 5; i++)
+                for (int k = i + 1; k < 5; k++)
+                    if (myDeckOfCards.deck[handGiven[i]].Face == myDeckOfCards.deck[handGiven[k]].Face)
+                    {
+                      //  returnFace = myDeckOfCards.deck[handGiven[i]].Face;
+                        faceVal++;
+                    }
+            if (faceVal == 2)
+                return true;
+            else
+                return false;
+        }
+
+
+        private bool isPair(ref int[]handGiven)
+        {
+            int faceVal = 0;
+           // returnFace = "";
+            for (int i = 0; i < 5; i++)
+                for (int k = i + 1; k < 5; k++)
+                    if (myDeckOfCards.deck[handGiven[i]].Face == myDeckOfCards.deck[handGiven[k]].Face)
+                    {
+                       // returnFace = myDeckOfCards.deck[handGiven[i]].Face;
                         faceVal++;
                     }
             if (faceVal == 1)
-                return "one pair of " + returnFace + "s";
-            else if (faceVal == 2)
-                return "two pairs\r\n";
-            else if (faceVal > 2)
-                return faceVal.ToString() + " of a kind";
+                return true;
             else
-                return "nothing";
+                return false;
         }
+
         private void CheckHand()
         {
-
             // return last in else if statement, because it is lowest hand compared
-            hand1TextBox.Text = "Player 1 has " + CheckPairs(ref hand1Nums);
-            hand2TextBox.Text = "Player 2 has " + CheckPairs(ref hand2Nums);
-                
-
+            if (isFlush(ref hand1Nums))
+            { 
+}
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)

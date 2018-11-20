@@ -10,7 +10,7 @@ namespace HW4CardGame
     {
         public string Face { get; } // Card’s face ("Ace", "Deuce", ...)
         public string Suit { get; } // Card’s suit ("Hearts", "Diamonds", ...)
-
+        
         // two-parameter constructor initializes card's Face and Suit
         public Card(string face, string suit)
         {

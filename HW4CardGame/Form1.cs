@@ -94,9 +94,13 @@ namespace HW4CardGame
             myDeckOfCards.Shuffle(); // reshuffle the deck
         }
 
+        // deals current card in deck/increments in class
+        // while setting array of int to hand1 and hand2
+        // thus creating a "hand" for hand 1 and 2 by being able to retrieve deck.value at hand[index]
+        // this makes it easier to then exchange cards later, because we can store the new integers into hand[index]
+        // also deals by alternating cards from player 1 to player 2 instead of 5 straight to player 1 then player 2
         private void generateHandsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // deal cards as long as current card is no more than 10 (5 cards per player)
+        {         
             while (myDeckOfCards.currentCard <= 10)
             {
                 hand1Nums[0] = myDeckOfCards.currentCard;
@@ -127,6 +131,8 @@ namespace HW4CardGame
             this.Close();
         }
 
+        // return if flush exists by checking that each card's Suit is the same
+        // if suit != 5 then flush does not exist
         private bool isFlush(ref int[]handGiven)
         {
             bool isFlush = false;

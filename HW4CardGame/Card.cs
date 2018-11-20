@@ -8,9 +8,9 @@ namespace HW4CardGame
 {
     class Card
     {
-        private string Face { get; } // Card’s face ("Ace", "Deuce", ...)
-        private string Suit { get; } // Card’s suit ("Hearts", "Diamonds", ...)
-
+        public string Face { get; } // Card’s face ("Ace", "Deuce", ...)
+        public string Suit { get; } // Card’s suit ("Hearts", "Diamonds", ...)
+        
         // two-parameter constructor initializes card's Face and Suit
         public Card(string face, string suit)
         {
@@ -19,6 +19,6 @@ namespace HW4CardGame
         }
 
         // return string representation of Card
-        public override string ToString() => $"{Face} of {Suit}";
+        public override string ToString() => $"{Suit} {Face}";
     }
 }

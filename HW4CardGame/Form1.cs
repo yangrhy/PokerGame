@@ -79,6 +79,7 @@ namespace HW4CardGame
             {"Spades King", Properties.Resources.sk },
         };
 
+        // ranks for each suit of card
         public Dictionary<string, int> suitRank = new Dictionary<string, int>()
         {
             {"Clubs", 1 },
@@ -87,6 +88,7 @@ namespace HW4CardGame
             {"Spades", 4 },
         };
 
+        // ranks for each face value of card
         public Dictionary<string, int> faceRank = new Dictionary<string, int>()
         {
             {"Deuce", 2 },
@@ -123,6 +125,8 @@ namespace HW4CardGame
             this.InitializeComponent();
             myDeckOfCards.currentCard = 0; // reset currentCard value so generateHands can work again
             myDeckOfCards.Shuffle(); // reshuffle the deck
+            hand1newCardButton.Enabled = false;
+            hand2newCardButton.Enabled = false;
         }
 
         // deals current card in deck/increments in class and shows correct image for each card into picturebox
@@ -161,22 +165,54 @@ namespace HW4CardGame
             this.Close();
         }
 
+        // is royal flush
+        private bool isRoyal(ref int[] handGiven)
+        {
+            bool isRoyal = false;
+            List<int> numFaceRanks = new List<int>();
+            int highStraight = 0;
+
+            for (int i = 0; i < 5; i++)
+            {
+                numFaceRanks.Add(faceRank[myDeckOfCards.deck[handGiven[i]].Face]);
+            }
+
+            for (int i = 0; i < numFaceRanks.Count; i++)
+            {
+                highStraight += numFaceRanks[i];
+            }
+                        
+            if (highStraight == 60)
+                isRoyal = true;
+            return isRoyal;
+        }
+
         // return if flush exists by checking that each card's Suit is the same
-        // if suit != 5 then flush does not exist
-        private bool isFlush(ref int[]handGiven)
+        private bool isFlush(ref int[] handGiven)
         {
             bool isFlush = false;
             int suit = 0;
-            for (int i = 0; i < 5; i++)
-                for (int k = i + 1; k < 5; k++)
-                    if (myDeckOfCards.deck[handGiven[i]].Suit == myDeckOfCards.deck[handGiven[k]].Suit)
-                        suit++;
-            if (suit == 5)
+
+            for (int i = 0; i < 4; i++)
+            {
+                if (myDeckOfCards.deck[handGiven[i]].Suit == myDeckOfCards.deck[handGiven[i+1]].Suit)
+                    suit +=1;
+            }
+
+            if (suit == 4)
+            {
                 isFlush = true;
+            }
+            else
+            {
+                isFlush = false;
+            }
             return isFlush;
         }
 
         // returns true if straight exists
+        // straight exists if for all nums in order, num[i] - num[i-1] = 1;
+        // exception for ace,2,3,4,5 since ace rank = 14
         private bool isStraight(ref int[] handGiven)
         {
             bool isStraight = false;
@@ -189,18 +225,37 @@ namespace HW4CardGame
 
             numFaceRanks.Sort();
 
-            for (int i = 4; i > 0; i--)
+            // check for ace,2,3,4,5
+            if (numFaceRanks[4] == 14 && (numFaceRanks[4] - numFaceRanks[0] == 12))
             {
-                if (numFaceRanks[i] - numFaceRanks[i - 1] == 1)
+                for (int i = 3; i > 0; i--)
                 {
-                    isStraight = true;
-                }
-                else
-                {
-                    isStraight = false;
+                    if (numFaceRanks[i] - numFaceRanks[i - 1] == 1)
+                    {
+                        isStraight = true;
+                    }
+                    else
+                    {
+                        isStraight = false;
+                        break;
+                    }
                 }
             }
-                       
+            else
+            {
+                for (int i = 4; i > 0; i--)
+                {
+                    if (numFaceRanks[i] - numFaceRanks[i - 1] == 1)
+                    {
+                        isStraight = true;
+                    }
+                    else
+                    {
+                        isStraight = false;
+                        break;
+                    }
+                }
+            }
             return isStraight;
         }
 
@@ -208,15 +263,15 @@ namespace HW4CardGame
         private bool isQuads(ref int[] handGiven)
         {
             int faceVal = 0;
-            //returnFace = "";
+            // returnFace = "";
             for (int i = 0; i < 5; i++)
                 for (int k = i + 1; k < 5; k++)
                     if (myDeckOfCards.deck[handGiven[i]].Face == myDeckOfCards.deck[handGiven[k]].Face)
                     {
-                        //returnFace = myDeckOfCards.deck[handGiven[i]].Face;
+                        // returnFace = myDeckOfCards.deck[handGiven[i]].Face;
                         faceVal++;
                     }
-            if (faceVal >= 4)
+            if (faceVal == 4)
                 return true;
             else
                 return false;
@@ -278,22 +333,34 @@ namespace HW4CardGame
         private int CheckHand(ref int[]handGiven)
         {
             // return int to give hand a numerical value to compare with other hand
-            if (isFlush(ref handGiven) && (isStraight(ref handGiven)))
+
+            // royal flush
+            if ((isRoyal(ref handGiven)) && (isFlush(ref handGiven)) && (isStraight(ref handGiven)))
             {
-                return 7;
+                return 9;
             }
-            else if (isFlush(ref handGiven))
+            // straight flush
+            else if ((isFlush(ref handGiven)) && (isStraight(ref handGiven)))
             {
-                return 6;
-            }
-            else if (isStraight(ref handGiven))
-            {
-                return 5;
+                return 8;
             }
             else if (isQuads(ref handGiven))
             {
-                return 4;
+                return 7;
             }
+            // full house
+            else if ((isTwoPair(ref handGiven)) && (isTrips(ref handGiven)))
+            {
+                return 6;
+            }
+            else if (isFlush(ref handGiven))
+            {
+                return 5;
+            }
+            else if (isStraight(ref handGiven))
+            {
+                return 4;
+            }           
             else if (isTrips(ref handGiven))
             {
                 return 3;
@@ -316,6 +383,7 @@ namespace HW4CardGame
         {
             List<int> newNums = new List<int>();
 
+            // add number of which index to be changed for hand array
             if (hand1CheckBox1.Checked == false)
             {
                 newNums.Add(0);
@@ -344,13 +412,14 @@ namespace HW4CardGame
                 hand1PB[newNums[i]].BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
             }
             //disable deal new card button
-            hand1newCardButton.Enabled = false;
+            //hand1newCardButton.Enabled = false;
         }
 
         private void hand2newCardButton_Click(object sender, EventArgs e)
         {
             List<int> newNums = new List<int>();
 
+            // add number of which index to be changed for hand array
             if (hand2CheckBox1.Checked == false)
             {
                 newNums.Add(0);
@@ -379,33 +448,73 @@ namespace HW4CardGame
                 hand2PB[newNums[i]].BackgroundImage = cardToImage[myDeckOfCards.DealCard().ToString()];
             }
             //disable deal new card button
-            hand2newCardButton.Enabled = false;
+            //hand2newCardButton.Enabled = false;
         }
-
+        private void PrintHand(string player, int handVal)
+        {
+            switch(handVal)
+            {
+                case 1:
+                    resultTextBox.Text += player + " has a pair!\r\n";
+                    break;
+                case 2:
+                    resultTextBox.Text += player + " has two pairs!\r\n";
+                    break;
+                case 3:
+                    resultTextBox.Text += player + " has a three of a kind!\r\n";
+                    break;
+                case 4:
+                    resultTextBox.Text += player + " has a straight!\r\n";
+                    break;
+                case 5:
+                    resultTextBox.Text += player + " has a flush!\r\n";
+                    break;
+                case 6:
+                    resultTextBox.Text += player + " has a full house!\r\n";
+                    break;
+                case 7:
+                    resultTextBox.Text += player + " has a four of a kind!\r\n";
+                    break;
+                case 8:
+                    resultTextBox.Text += player + " has a straight flush!\r\n";
+                    break;
+                case 9:
+                    resultTextBox.Text += player + " has a royal flush!\r\n";
+                    break;
+                default:
+                    resultTextBox.Text += player + " has nothing!\r\n";
+                    break;
+            }
+        }
         private void button1_Click_1(object sender, EventArgs e)
         {
-            //send array of each hand to CheckHand and receive value for hand strength
-            int hand1Value = CheckHand(ref hand1Nums);
-            int hand2Value = CheckHand(ref hand2Nums);
+            // only compare hands when cards have been dealt and hands are in play
+            if (generateHandsToolStripMenuItem.Enabled == false)
+            {
+                //send array of each hand to CheckHand and receive value for hand strength
+                int hand1Value = CheckHand(ref hand1Nums);
+                int hand2Value = CheckHand(ref hand2Nums);
+                PrintHand("Player 1", hand1Value);
+                PrintHand("Player 2", hand2Value);
 
-                    /*
-           //if currentCard >= 10 then that means cards have been dealt and hands are in play
-           if (myDeckOfCards.currentCard >= 10)
-           {
-               // Send correct hand array depending on which tab is selected
-               if (tabControl1.SelectedTab == tabControl1.TabPages["Player 1 Hand"])
-               {
-                   CheckHand(ref hand1Nums);
-               }
-               else if (tabControl1.SelectedTab == tabControl1.TabPages["Player 2 Hand"])
-               {
-                   CheckHand(ref hand2Nums);
-               }
-           }
-           else
-           {
-               MessageBox.Show("Please deal cards first.");
-           }*/
+                if (hand1Value > hand2Value)
+                {
+                    resultTextBox.Text += "Player 1 wins!";
+                }
+                else if (hand1Value < hand2Value)
+                {
+                    resultTextBox.Text += "Player 2 wins!";
+                }
+                else
+                {
+                    resultTextBox.Text += "Tie Game!";
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please deal cards first.");
+            }
+            
         }
     }
 }

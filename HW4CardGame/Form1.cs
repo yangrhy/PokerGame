@@ -542,7 +542,7 @@ namespace HW4CardGame
             {
                 MessageBox.Show("Please deal cards first.");
             }
-            
+            button1.Enabled = false;
         }
     }
 }

@@ -4,7 +4,7 @@ This is a 5 card poker game. 5 cards are dealt to each player. Each player has o
 ### Initial Startup
 ![Initial](/Sceenshots/Before.JPG)
 
-### Player 1's first deal
+### Player 1's Hand After Clicking "Deal Cards"
 ![Initial](/Sceenshots/Player1_deal.JPG)
 
 ### Player 1 Holds a Pair of Queens
@@ -27,3 +27,5 @@ This is a 5 card poker game. 5 cards are dealt to each player. Each player has o
 
 ### After Clicking "Compare Hands" Button
 ![Initial](/Sceenshots/Result_after.JPG)
+
+### Click "New Game" Tab to Start a New Game
